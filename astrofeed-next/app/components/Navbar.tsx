@@ -12,7 +12,7 @@ export default function Navbar() {
                 <a href="">APOD</a>
                 <a href="">News</a>
                 <a href="">Launches</a>
-                <a href=""><IoIosSearch /></a>
+                
                 
             </div>
             </div>
