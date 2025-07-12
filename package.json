@@ -1,4 +1,11 @@
 {
+  "name": "astro-feed",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
   "dependencies": {
     "react-icons": "^5.5.0"
   }
