@@ -2,7 +2,7 @@ import Navbar from './components/Navbar';
 // import HeroSection from './components/HeroSection';
 // import Featured from'./components/Featured';
 // import ExploreMore from'./components/ExploreMore';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 
 
 export default function Home(){
@@ -11,8 +11,8 @@ export default function Home(){
         <Navbar/>
         {/* <HeroSection/>
         <Featured/>
-        <ExploreMore/>
-        <Footer /> */}
+        <ExploreMore/> */}
+        <Footer />
         </>
     
     )
