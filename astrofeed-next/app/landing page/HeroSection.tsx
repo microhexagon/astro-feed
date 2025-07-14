@@ -9,7 +9,7 @@ export default function Herosection() {
                 <div className="absolute inset-0 bg-black/60 z-0" />
                 <div>
                     <h2 className=" font-bold text-3xl sm:text-4xl md:text-5xl text-white drop-shadow-lg">Explore the Cosmos with AstroFeed</h2>
-                    <p className="text-white text-base sm:text-lg md:text-xl mt-4 leading-relaxed drop-shadow-lg text-center">
+                    <p className="text-white text-base sm:text-lg md:text-xl mt-4 leading-relaxed drop-shadow-lg text-center sm:text-left">
                         <span className="block">
                             Your gateway to the wonders of space exploration. Discover the latest astronomy news, breathtaking images,
                         </span>
