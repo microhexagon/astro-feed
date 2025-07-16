@@ -4,7 +4,11 @@ import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-export default function Navbar() {
+interface NavbarProps {
+    links:string[];
+}
+
+export default function Navbar({ links }: NavbarProps ) {
 const [showSearch, setShowSearch] = useState(false);
 const [menuOpen, setMenuOpen] = useState(false);
 
@@ -23,9 +27,24 @@ const [menuOpen, setMenuOpen] = useState(false);
 
         {/* 🔹 Desktop links (only md and up) */}
         <div className="hidden md:flex items-center space-x-6 mt-2 md:mt-0">
-                <a href="">APOD</a>
+                {/* <a href="">APOD</a>
                 <a href="">News</a>
                 <a href="">Launches</a>
+                <a href="">Home</a>
+                <a href="">Gallery</a>
+                <a href="">Events</a>
+                <a href="">Blogs</a>
+                <a href="">Reports</a>
+                <a href="">About</a> */}
+                
+                {links.map(( link, index)=> (
+                    <a key={index} href="">{link}</a>
+                ))}
+                
+
+
+
+
         <div className="bg-gray-700 rounded-lg h-7 w-7 flex justify-center items-center">
             <FaSearch
                 onClick={() => setShowSearch(!showSearch)}
