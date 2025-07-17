@@ -21,13 +21,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
 
-    // 🔄 Optional: Hook your API here
-    // await fetch('/api/contact', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formData),
-    // });
-
     alert('Message Sent!');
     setFormData({ name: '', email: '', message: '' });
 };
@@ -36,7 +29,10 @@ return (
     <>
         <Navbar links={["News", "Blogs", "APOD"]} />
 
-        <section className="min-h-screen bg-black text-white px-4 py-10 md:px-20">
+        
+        <section className="bg-black text-white px-4 py-10 md:px-20">
+
+
         <div className="text-center mb-10">
             <h1 className="text-3xl md:text-5xl font-bold">Get in Touch</h1>
             <p className="text-gray-400 mt-2">We’d love to hear from you!</p>
@@ -46,7 +42,7 @@ return (
           {/* 📩 Contact Form */}
         <form
             onSubmit={handleSubmit}
-            className="space-y-6 bg-gray-900 p-6 rounded-lg shadow-lg"
+            className=" space-y-6 bg-gray-900 p-6 rounded-lg shadow-lg self-start"
         >
             <div>
                 <label htmlFor="name" className="block mb-1">Name</label>
@@ -97,17 +93,21 @@ return (
 
                   {/* 🖼️ Right Side Image */}
         <div className="relative">
+        
+        
         <section
-            className="relative h-screen bg-cover bg-center flex items-center justify-center px-4 py-6"
+        className="relative h-[620px] bg-cover bg-center flex items-center justify-center px-4 py-6"
             style={{
             backgroundImage: "url('/assets/herosection-bg.png')",
         }}
+
         >
+
           {/* Main Content in the Center */}
             <div className="text-center text-white max-w-2xl">
-                <h1 className="text-4xl mb-4 font-bold">Contact Us</h1>
-                <h2 className="text-2xl font-semibold">Explore the Cosmos with AstroFeed</h2>
-                <p className="mt-4 text-lg font-light">
+                <h1 className="text-4xl mb-4 font-bold  drop-shadow-lg">Contact Us</h1>
+                <h2 className="text-2xl font-semibold  drop-shadow-lg">Explore the Cosmos with AstroFeed</h2>
+                <p className="mt-4 text-lg font-light  drop-shadow-lg">
                 Your gateway to the wonders of space exploration. Discover the latest astronomy news,
                 breathtaking images, <br /> and upcoming launch schedules.
                 </p>
