@@ -82,12 +82,19 @@ export default function Navbar({ links }: NavbarProps) {
 
             {/* ✅ Dropdown for mobile menu */}
             {menuOpen && (
-                <div className="md:hidden mt-4 flex flex-col space-y-3">
-                    {links.map((link, index) => (
-                        <a key={index} href={`/${link.toLowerCase()}`}>{link}</a>
-                    ))}
-                </div>
+            <div className="md:hidden mt-4 flex flex-col space-y-3">
+                {links.map((link, index) => (
+                <a
+                    key={index}
+                    href={`/${link.toLowerCase()}`}
+                    className="text-white px-4 py-2 rounded hover:bg-white hover:text-black transition duration-200"
+                    >
+                    {link}
+                </a>
+                ))}
+            </div>
             )}
+
         </nav>
     );
 }
