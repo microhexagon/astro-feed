@@ -27,7 +27,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
 return (
     <>
-        <Navbar links={["News", "Blogs", "APOD"]} />
+        <Navbar links={["News", "Launches", "APOD"]} />
 
         
         <section className="bg-black text-white px-4 py-10 md:px-20">

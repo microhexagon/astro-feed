@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 export default function Home(){
     return (
         <>
-        <Navbar links={["APOD","News","Launches","Contact"]} />
+        <Navbar links={["APOD","News","Launches","Contact","About"]} />
         <div className='pt-10 pr-40 pb-10 pl-40 bg-gray-800 text-white '>
             <HeroSection/>
             <Featured/>
