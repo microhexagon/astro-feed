@@ -2,6 +2,9 @@
 
 import Navbar from '../components/Navbar';
 import { useState } from 'react';
+import { FiTwitter } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa6";
+import { TiSocialFacebookCircular } from "react-icons/ti";
 
 export default function ContactPage() {
 const [formData, setFormData] = useState({
@@ -35,7 +38,7 @@ return (
 
         <section className="min-h-screen bg-black text-white px-4 py-10 md:px-20">
         <div className="text-center mb-10">
-            <h1 className="text-3xl md:text-5xl font-bold">Contact Us</h1>
+            <h1 className="text-3xl md:text-5xl font-bold">Get in Touch</h1>
             <p className="text-gray-400 mt-2">We’d love to hear from you!</p>
         </div>
 
@@ -92,11 +95,39 @@ return (
             </button>
         </form>
 
-          {/* 🖼️ Right Side Image */}
-        <div className="">
-            <img src="/public/assets/contact bg-1.jpg" alt="bg" />
+                  {/* 🖼️ Right Side Image */}
+        <div className="relative">
+        <section
+            className="relative h-screen bg-cover bg-center flex items-center justify-center px-4 py-6"
+            style={{
+            backgroundImage: "url('/assets/herosection-bg.png')",
+        }}
+        >
+          {/* Main Content in the Center */}
+            <div className="text-center text-white max-w-2xl">
+                <h1 className="text-4xl mb-4 font-bold">Contact Us</h1>
+                <h2 className="text-2xl font-semibold">Explore the Cosmos with AstroFeed</h2>
+                <p className="mt-4 text-lg font-light">
+                Your gateway to the wonders of space exploration. Discover the latest astronomy news,
+                breathtaking images, <br /> and upcoming launch schedules.
+                </p>
+            </div>
         
+          {/* Right Side: Social Icons and Fact Box */}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-6">
+            
+        
+            {/* Social Icons */}
+            <div className="flex flex-col gap-4 pr-1">
+                <a href="#"><FiTwitter className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" /></a>
+                <a href="#"><FaInstagram className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" /></a>
+                <a href="#"><TiSocialFacebookCircular className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" /></a>
+            </div>
+            </div>
+        </section>
         </div>
+
+
         </div>
     </section>
     </>
