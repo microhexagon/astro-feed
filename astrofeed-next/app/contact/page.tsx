@@ -34,7 +34,7 @@ return (
 
 
         <div className="text-center mb-10">
-            <h1 className="text-3xl md:text-5xl font-bold">Get in Touch</h1>
+            <h1 className="text-3xl md:text-5xl font-bold">Contact Us</h1>
             <p className="text-gray-400 mt-2">We’d love to hear from you!</p>
         </div>
 
@@ -105,12 +105,16 @@ return (
 
           {/* Main Content in the Center */}
             <div className="text-center text-white max-w-2xl">
-                <h1 className="text-4xl mb-4 font-bold  drop-shadow-lg">Contact Us</h1>
-                <h2 className="text-2xl font-semibold  drop-shadow-lg">Explore the Cosmos with AstroFeed</h2>
+                <h1 className="text-4xl mb-4 font-bold  drop-shadow-lg "> Get in Touch</h1>
+                <h2 className="text-2xl font-semibold  drop-shadow-lg mt-2">Explore the Cosmos with AstroFeed</h2>
                 <p className="mt-4 text-lg font-light  drop-shadow-lg">
                 Your gateway to the wonders of space exploration. Discover the latest astronomy news,
                 breathtaking images, <br /> and upcoming launch schedules.
                 </p>
+                <p className='font-bold text-2xl mt-2'>Address</p>
+                <p>AstroFeed HQ, 123 Galaxy Avenue, Space City, Earth 00042</p>
+                <p className='font-bold text-2xl mt-2'>Email</p>
+                <p>contact@astrofeed.com</p>
             </div>
         
           {/* Right Side: Social Icons and Fact Box */}
