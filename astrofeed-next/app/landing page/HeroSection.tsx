@@ -23,7 +23,7 @@ export default function Herosection() {
                     <div className="flex justify-center m-3 drop-shadow-lg">
                         <Link href="./news">
                         
-                            <button className="flex justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28 ">Get Started</button>
+                            <button className="flex justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28  hover:scale-110 transition ">Get Started</button>
                         </Link> 
                     </div>
                 </div>

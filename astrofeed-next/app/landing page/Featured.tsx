@@ -32,7 +32,7 @@ export default function Featured() {
                     {/* Button aligned right */}
                     <div className="flex justify-end mt-4">
                         <a href="">
-                            <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-44">
+                            <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-44  hover:scale-110 transition">
                                 View APOD
                             </button>
                         </a>

@@ -13,6 +13,7 @@ export default function Home(){
             <HeroSection/>
             <Featured/>
             <ExploreMore/>
+            <Footer/>
         </div>
         </>
     )

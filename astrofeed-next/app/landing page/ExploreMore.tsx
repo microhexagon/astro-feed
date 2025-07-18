@@ -7,14 +7,14 @@ return (
         </div >
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 mb-20">
             <Link href="./news">
-                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44">
+                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44  hover:scale-110 transition">
                     View News
                 </button>
             </Link>
             <Link href="">
                 
-                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44">
-                    viwe Launches
+                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44  hover:scale-110 transition">
+                    view Launches
                 </button>
             </Link>
         </div>

@@ -39,7 +39,7 @@ return (
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* 📩 Contact Form */}
+          {/* Contact Form */}
         <form
             onSubmit={handleSubmit}
             className=" space-y-6 bg-gray-900 p-6 rounded-lg shadow-lg self-start"
