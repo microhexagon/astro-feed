@@ -42,7 +42,7 @@ interface Mission {
   description: string;
   type: string;
 }
-// Main interface for launch data structure
+//  interface for launch data structure
 interface Launch {
   id: string;
   name: string;
@@ -53,4 +53,11 @@ interface Launch {
   pad: Pad;
   rocket: Rocket;
   mission: Mission;
+}
+// Interface for API response structure
+interface ApiResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Launch[];
 }
