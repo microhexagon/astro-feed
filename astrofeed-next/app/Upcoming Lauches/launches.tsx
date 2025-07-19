@@ -29,3 +29,16 @@ interface RocketConfiguration {
   name: string;
   full_name: string;
 }
+// Interface for rocket information
+interface Rocket {
+  id: number;
+  configuration: RocketConfiguration;
+}
+
+// Interface for mission details
+interface Mission {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+}
