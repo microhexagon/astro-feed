@@ -42,3 +42,15 @@ interface Mission {
   description: string;
   type: string;
 }
+// Main interface for launch data structure
+interface Launch {
+  id: string;
+  name: string;
+  net: string; 
+  image: string;
+  status: LaunchStatus;
+  launch_service_provider: LaunchServiceProvider;
+  pad: Pad;
+  rocket: Rocket;
+  mission: Mission;
+}
