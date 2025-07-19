@@ -22,4 +22,10 @@ interface Location {
   id: number;
   name: string;
   country_code: string;
+} 
+// Interface for rocket  details
+interface RocketConfiguration {
+  id: number;
+  name: string;
+  full_name: string;
 }
