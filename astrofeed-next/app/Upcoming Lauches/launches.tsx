@@ -17,3 +17,9 @@ interface LaunchStatus {
     name: string;
     type: string;
   }
+  // Interface for geographical location 
+interface Location {
+  id: number;
+  name: string;
+  country_code: string;
+}
