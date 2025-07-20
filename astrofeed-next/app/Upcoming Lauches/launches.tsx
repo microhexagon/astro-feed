@@ -133,3 +133,21 @@ useEffect(() => {
       return 'Later';
     }
   };
+   // Function to format date and time separately for display
+   const formatDateTime = (dateString: string) => {
+    const date = parseISO(dateString); // Parse the date string
+    return {
+      date: format(date, 'MMM dd, yyyy'), // Format: Jan 15, 2024
+      time: format(date, 'hh:mm a')       // Format: 02:30 PM
+    };
+  };
+
+  // Function to group launches by time categories (Today, Tomorrow, Later)
+  const groupLaunchesByTime = () => {
+    // Initialize object with empty arrays for each category
+    const grouped: { [key: string]: Launch[] } = {
+      Today: [],
+      Tomorrow: [],
+      Later: []
+    };
+    
