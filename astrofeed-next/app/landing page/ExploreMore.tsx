@@ -1,3 +1,4 @@
+import Link from 'next/link';
 export default function ExploreMore() {
 return (
     <div className="mt-10 mb-14 px-4 sm:px-10 md:px-20">
@@ -5,16 +6,17 @@ return (
             ExploreMore
         </div >
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 mb-20">
-            <a href="">
-                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44">
+            <Link href="./news">
+                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44  hover:scale-110 transition">
                     View News
                 </button>
-            </a>
-            <a href="">
-                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44">
-                    View Launches
+            </Link>
+            <Link href="">
+                
+                <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44  hover:scale-110 transition">
+                    view Launches
                 </button>
-            </a>
+            </Link>
         </div>
     </div>
 );

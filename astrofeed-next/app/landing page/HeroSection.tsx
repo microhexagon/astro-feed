@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Herosection() {
     return (
             <section
@@ -19,7 +21,10 @@ export default function Herosection() {
                     </p>
 
                     <div className="flex justify-center m-3 drop-shadow-lg">
-                        <button className="flex justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28 ">Get Started</button>
+                        <Link href="./news">
+                        
+                            <button className="flex justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28  hover:scale-110 transition ">Get Started</button>
+                        </Link> 
                     </div>
                 </div>
             </section>
