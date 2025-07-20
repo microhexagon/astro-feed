@@ -61,3 +61,13 @@ interface ApiResponse {
   previous: string | null;
   results: Launch[];
 }
+// Main React component for displaying launch schedules
+const LaunchesPage = () => {
+  // State management using React hooks
+  const [launches, setLaunches] = useState<Launch[]>([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState<string | null>(null); 
+// useEffect hook to fetch launches
+useEffect(() => {
+  fetchLaunches();
+}, []); 
