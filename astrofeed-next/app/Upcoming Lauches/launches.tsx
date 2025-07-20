@@ -102,12 +102,34 @@ useEffect(() => {
   const getStatusBadge = (status: string) => {
     // Define color mappings for different launch statuses
     const statusColors: { [key: string]: string } = {
-      'Go': 'bg-green-500',           // Ready to launch
-      'TBC': 'bg-yellow-500',         // To Be Confirmed
-      'TBD': 'bg-gray-500',           // To Be Determined
-      'Success': 'bg-green-600',      // Launch was successful
-      'Failure': 'bg-red-500',        // Launch failed
-      'Partial Failure': 'bg-orange-500', // Partial success
-      'In Flight': 'bg-blue-500',     // Currently in progress
-      'Hold': 'bg-red-400',           // Launch on hold
+      'Go': 'bg-green-500',         
+      'TBC': 'bg-yellow-500',         
+      'TBD': 'bg-gray-500',           
+      'Success': 'bg-green-600',      
+      'Failure': 'bg-red-500',       
+      'Partial Failure': 'bg-orange-500', 
+      'In Flight': 'bg-blue-500',     
+      'Hold': 'bg-red-400',          
     };
+    // Return JSX element with appropriate styling
+    return (
+      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-white ${
+        statusColors[status] || 'bg-gray-500' // Default to gray if status not found
+      }`}>
+        {status}
+      </span>
+    );
+  };
+   // Function to categorize launches by when they occur
+   const getTimeLabel = (dateString: string): 'Today' | 'Tomorrow' | 'Later' => {
+    const launchDate = parseISO(dateString); // Parse ISO date string
+    
+    // Use date-fns functions to check if launch is today or tomorrow
+    if (isToday(launchDate)) {
+      return 'Today';
+    } else if (isTomorrow(launchDate)) {
+      return 'Tomorrow';
+    } else {
+      return 'Later';
+    }
+  };
