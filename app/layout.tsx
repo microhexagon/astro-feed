@@ -29,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-800`}
       >
+        <Navbar links={["APOD", "News", "Launches", "Contact", "About"]} />
         {children}
+        <Footer />
       </body>
     </html>
   );
