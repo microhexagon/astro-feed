@@ -86,4 +86,15 @@ useEffect(() => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+     // Parse JSON response and update state
+     const data: ApiResponse = await response.json();
+     setLaunches(data.results || []); // Set launches or empty array if results is null
+   } catch (err) {
+     // Handle errors and update error state
+     setError(err instanceof Error ? err.message : 'An error occurred');
+     console.error('Error fetching launches:', err);
+   } finally {
+     // Always set loading to false when done (success or error)
+     setLoading(false);
+   }
+ };
