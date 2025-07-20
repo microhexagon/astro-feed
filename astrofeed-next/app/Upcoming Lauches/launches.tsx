@@ -98,3 +98,16 @@ useEffect(() => {
      setLoading(false);
    }
  };
+  // Function to generate colored status badges based on launch status
+  const getStatusBadge = (status: string) => {
+    // Define color mappings for different launch statuses
+    const statusColors: { [key: string]: string } = {
+      'Go': 'bg-green-500',           // Ready to launch
+      'TBC': 'bg-yellow-500',         // To Be Confirmed
+      'TBD': 'bg-gray-500',           // To Be Determined
+      'Success': 'bg-green-600',      // Launch was successful
+      'Failure': 'bg-red-500',        // Launch failed
+      'Partial Failure': 'bg-orange-500', // Partial success
+      'In Flight': 'bg-blue-500',     // Currently in progress
+      'Hold': 'bg-red-400',           // Launch on hold
+    };
