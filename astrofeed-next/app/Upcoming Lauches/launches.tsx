@@ -71,3 +71,9 @@ const LaunchesPage = () => {
 useEffect(() => {
   fetchLaunches();
 }, []); 
+ // fetch launch data from the API
+ const fetchLaunches = async () => {
+  try {
+    // Set loading to true and clear any previous errors
+    setLoading(true);
+    setError(null);
