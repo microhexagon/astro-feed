@@ -77,3 +77,13 @@ useEffect(() => {
     // Set loading to true and clear any previous errors
     setLoading(true);
     setError(null);
+    // Make API request to SpaceDevs Launch Library
+    const response = await fetch(
+      'https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=20&format=json'
+    );
+    
+    // Check if the response was successful
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
