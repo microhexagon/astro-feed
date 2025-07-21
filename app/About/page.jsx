@@ -35,7 +35,7 @@ const AboutPage = () => {
       {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
         {/* About Section */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-6xl mx-auto mb-16">
           <h1 className="text-4xl font-bold mb-8">About AstroFeed</h1>
           <p className="text-gray-300 text-lg leading-relaxed">
             AstroFeed is a platform dedicated to space exploration enthusiasts. Our mission is to provide a comprehensive and 
