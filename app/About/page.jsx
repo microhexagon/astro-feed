@@ -32,7 +32,6 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
         {/* About Section */}
         <div className="max-w-6xl mx-auto mb-16">
@@ -46,7 +45,7 @@ const AboutPage = () => {
 
         {/* Our Team Section */}
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Team</h2>
+          <h2 className="text-3xl font-bold mb-12 text-left">Our Team</h2>
           
           {/* Team Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -69,30 +68,12 @@ const AboutPage = () => {
               </div>
             ))}
           </div>
+          <div>
 
-          {/* GitHub Links */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              href="https://github.com/EthanCarter" 
-              target="_blank"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-            >
-              GitHub: Ethan Carter
-            </Link>
-            <Link 
-              href="https://github.com/LiamHarper" 
-              target="_blank"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-            >
-              GitHub: Liam Harper
-            </Link>
-            <Link 
-              href="https://github.com/OliviaBennett" 
-              target="_blank"
-              className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-            >
-              GitHub: Olivia Bennett
-            </Link>
+  
+
+
+
           </div>
         </div>
       </div>
