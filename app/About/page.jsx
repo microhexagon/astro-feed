@@ -9,7 +9,7 @@ const AboutPage = () => {
       name: 'Ethan Carter',
       role: 'Software Engineer',
       avatar: 'E',
-      image: '/assets/Ethane-carter.png', // Fixed: /assets/ instead of /assests/
+      image: '/assets/Ethane-carter.png', 
       github: 'https://github.com/EthanCarter'
     },
     {
@@ -17,7 +17,7 @@ const AboutPage = () => {
       name: 'Liam Harper',
       role: 'UX/UX Designer',
       avatar: 'L',
-      image: '/assets/liam-harper.png', // Fixed: /assets/ and .png extension
+      image: '/assets/liam-harper.png', 
       github: 'https://github.com/LiamHarper'
     },
     {
@@ -25,13 +25,13 @@ const AboutPage = () => {
       name: 'Olivia Bennett',
       role: 'Content Strategist',
       avatar: 'O',
-      image: '/assets/olivia-bennett.png', // Fixed: /assets/ and .png extension
+      image: '/assets/olivia-bennett.png', 
       github: 'https://github.com/OliviaBennett'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-slate-900 text-white">
       <div className="container mx-auto px-6 py-12">
         {/* About Section */}
         <div className="max-w-6xl mx-auto mb-16">
@@ -47,7 +47,7 @@ const AboutPage = () => {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-left">Our Team</h2>
           
-          {/* Team Cards Grid */}
+          {/*  Cards  */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {teamMembers.map((member) => (
               <div key={member.id} className="bg-gray-800 rounded-lg p-6 text-center hover:bg-gray-700 transition-colors duration-300">
@@ -70,7 +70,43 @@ const AboutPage = () => {
           </div>
           <div>
 
+         {/* GitHub Links */}
+<div className="flex flex-col items-center gap-4">
+  <div className="flex justify-center gap-6">
+    <Link
+      href="https://github.com/EthanCarter"
+      target="_blank"
+      className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm decoration-none hover:underline hover:decoration-blue-400"
+      style={{ textDecoration: 'none' }}
+    >
+      GitHub: Ethan Carter
+    </Link>
+    <Link
+      href="https://github.com/LiamHarper"
+      target="_blank"
+      className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm decoration-none hover:underline hover:decoration-blue-400"
+      style={{ textDecoration: 'none' }}
+    >
+      GitHub: Liam Harper
+    </Link>
+  </div>
   
+  <div className="flex justify-center">
+    <Link
+      href="https://github.com/OliviaBennett"
+      target="_blank"
+      className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm decoration-none hover:underline hover:decoration-blue-400"
+      style={{ textDecoration: 'none' }}
+    >
+      GitHub: Olivia Bennett
+    </Link>
+  </div>
+</div>
+
+
+
+
+
 
 
 
