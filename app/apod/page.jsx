@@ -5,6 +5,26 @@ import React, { useState, useEffect } from "react";
 export default function PictureOfTheDay() {
  
 
+  // API fetch function
+  const fetchAPOD = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=jwGg2gdXVKUNjV25b3pqzm24rSkmZvsjujJwTfvS');
+     
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+     
+      const data = await response.json();
+      setApodData(data);
+    } catch (err) {
+      setError('Failed to fetch astronomy data');
+      console.error('Error fetching APOD:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-900">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
