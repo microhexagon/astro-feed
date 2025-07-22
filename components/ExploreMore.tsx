@@ -11,7 +11,7 @@ return (
                     View News
                 </button>
             </Link>
-            <Link href="">
+            <Link href="/launches">
                 
                 <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-full sm:w-44  hover:scale-110 transition">
                     view Launches
