@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Featured() {
     return (
         <div className="mt-10 mb-10 pt-5 pb-5 px-4">
@@ -31,11 +32,11 @@ export default function Featured() {
 
                     {/* Button aligned right */}
                     <div className="flex justify-end mt-4">
-                        <a href="">
+                        <Link href="/apod">
                             <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-44  hover:scale-110 transition">
                                 View APOD
                             </button>
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
