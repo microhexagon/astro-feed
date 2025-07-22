@@ -3,7 +3,15 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 export default function PictureOfTheDay() {
- 
+  // storing API data
+  const [apodData, setApodData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  
+  useEffect(() => {
+    fetchAPOD();
+  }, []);
 
   // API fetch function
   const fetchAPOD = async () => {
