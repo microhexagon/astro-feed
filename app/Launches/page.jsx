@@ -11,7 +11,30 @@ import {
 } from "lucide-react"
 
 export default function Launches() {
- 
+  const [launches, setLaunches] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchLaunches();
+  }, []);
+
+  const fetchLaunches = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=5");
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      const data = await res.json();
+      setLaunches(data.results || []);
+    } catch (err) {
+      setError("Failed to fetch launch data");
+      console.error("Error fetching launches:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen w-screen bg-slate-900">
