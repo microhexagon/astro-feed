@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// interface NasaImage {
-//   url: string;
-//   title: string;
-//   explanation : string;
-// }
+interface NasaImage {
+  url: string;
+  title: string;
+  explanation : string;
+}
 
 export default function NewsPage() {
-  const [news , setNews] = useState([]);
+  const [news , setNews] = useState<NasaImage[]>([]);
   useEffect(() =>{
     fetch ('https://api.nasa.gov/planetary/apod?api_key=NXASSRC6pYR7BjSZMlaXob2dfyBV9Siaiw73vCfA&count=6')
     .then(res => res.json())
