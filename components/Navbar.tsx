@@ -50,7 +50,7 @@ export default function Navbar({ links }: NavbarProps) {
                         />
                     )}
                     <div className="bg-gray-700 rounded-lg h-7 w-7 flex justify-center items-center">
-                        <Link href="./app/About"><CgProfile className="h-5 w-5" /></Link>
+                        <Link href="/about"><CgProfile className="h-5 w-5" /></Link>
                     </div>
                 </div>
 
