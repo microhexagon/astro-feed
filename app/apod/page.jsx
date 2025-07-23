@@ -95,9 +95,11 @@ export default function PictureOfTheDay() {
                   <p className="text-gray-400 text-xs">
                     © {apodData.copyright}
                   </p>
+             
                 </div>
               )}
             </div>
+            
           </div>
         ) : null}
       </main>
