@@ -1,11 +1,8 @@
-/* app/globals.css */
+
 
 @import "tailwindcss";
 
-/*
-  Keep the :root and @media rules as they are.
-  These are good for setting up global variables for things like text.
-*/
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,9 +15,7 @@
   }
 }
 
-/* Corrected body styling. We'll set a neutral background for the entire page
-  and let a specific container manage the dark background.
-*/
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -28,16 +23,12 @@ body {
   margin: 0;
 }
 
-/* This is the new style you need to add */
+
 .page-container {
-  background-color: #1A202C; /* This will make the entire content area dark */
-  color: #a0aec0; /* Set text color for the dark background */
+  background-color: #1A202C;
+  color: #a0aec0; 
 }
 
-/*
-  The footer styling is now a bit redundant since we're using a container,
-  but it's good to keep it for styling specific footer elements.
-*/
 footer {
   background-color: #1A202C;
   color: #a0aec0;
