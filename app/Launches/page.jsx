@@ -209,7 +209,7 @@ export default function Launches() {
               )}
             </section>
 
-            {/* Later Section - Always show */}
+            {/* Later Section  */}
             <section>
               <h2 className="text-xl font-semibold text-white mb-4">Later</h2>
               {groupedLaunches.later.length > 0 ? (
