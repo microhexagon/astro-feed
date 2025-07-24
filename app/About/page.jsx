@@ -31,7 +31,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-800 text-white">
+    <div className="min-h-screen  text-white">
       <div className="container mx-auto px-6 py-12">
         {/* About Section */}
         <div className="max-w-6xl mx-auto mb-16">
@@ -102,14 +102,6 @@ const AboutPage = () => {
     </Link>
   </div>
 </div>
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>

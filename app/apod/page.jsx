@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 export default function PictureOfTheDay() {
@@ -8,7 +7,6 @@ export default function PictureOfTheDay() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  
   useEffect(() => {
     fetchAPOD();
   }, []);
@@ -18,11 +16,11 @@ export default function PictureOfTheDay() {
     try {
       setLoading(true);
       const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=jwGg2gdXVKUNjV25b3pqzm24rSkmZvsjujJwTfvS');
-     
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-     
+
       const data = await response.json();
       setApodData(data);
     } catch (err) {
@@ -34,12 +32,12 @@ export default function PictureOfTheDay() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-slate-900 ">
+    <div className="min-h-screen w-screen  ">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-white mb-8 text-left">
           Astronomy Picture of the Day
         </h1>
-       
+
         {loading ? (
           <div className="bg-slate-800 rounded-lg p-8 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
@@ -48,7 +46,7 @@ export default function PictureOfTheDay() {
         ) : error ? (
           <div className="bg-red-900/20 border border-red-500 rounded-lg p-8 text-center">
             <p className="text-red-400">{error}</p>
-            <button 
+            <button
               onClick={fetchAPOD}
               className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
             >
@@ -74,12 +72,12 @@ export default function PictureOfTheDay() {
                 />
               </div>
             ) : null}
-            
+
             <div className="p-6">
               <h2 className="text-2xl font-bold text-white mb-2">
                 {apodData.title}
               </h2>
-              <p className="text-blue-400 text-sm mb-4 font-medium">
+              <p className="text-gray-400 text-sm mb-4 font-medium">
                 {new Date(apodData.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -89,14 +87,7 @@ export default function PictureOfTheDay() {
               <p className="text-gray-300 leading-relaxed text-sm">
                 {apodData.explanation}
               </p>
-              
-              {apodData.copyright && (
-                <div className="mt-4 pt-4 border-t border-slate-700">
-                  <p className="text-gray-400 text-xs">
-                    © {apodData.copyright}
-                  </p>
-                </div>
-              )}
+
             </div>
           </div>
         ) : null}
