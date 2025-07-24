@@ -160,7 +160,7 @@ export default function Launches() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-gray-900 font-sans">
+    <div className="min-h-screen w-screen  font-sans">
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-white mb-8 text-left">
