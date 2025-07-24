@@ -72,7 +72,7 @@ export default function Launches() {
   const groupedLaunches = useMemo(() => {
     const today = [];
     const tomorrow = [];
-    const laterCandidates = []; // Temporary array for sorting
+    const laterCandidates = []; 
 
     launches.forEach((launch) => {
       const launchDate = new Date(launch.window_start);
@@ -89,7 +89,7 @@ export default function Launches() {
           } else if (isTomorrow(launchDate)) {
             tomorrow.push(launch);
           } else {
-            laterCandidates.push(launch); // Push to temporary array
+            laterCandidates.push(launch); 
           }
       }
     });
@@ -99,7 +99,7 @@ export default function Launches() {
     tomorrow.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
     laterCandidates.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
 
-    // Only show first 2 launches in Later section and first 1 in Tomorrow
+    // display first 2 launches in Later section and first 1 in Tomorrow
     const later = laterCandidates.slice(0, 2);
     const tomorrowLimited = tomorrow.slice(0, 1);
 
@@ -197,7 +197,7 @@ export default function Launches() {
               )}
             </section>
 
-            {/* Tomorrow Section - Always show */}
+            {/* Tomorrow Section  */}
             <section>
               <h2 className="text-xl font-semibold text-white mb-4">Tomorrow</h2>
               {groupedLaunches.tomorrow.length > 0 ? (
