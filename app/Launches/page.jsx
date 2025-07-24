@@ -143,7 +143,7 @@ export default function Launches() {
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-slate-800/20"></div>
               <div
-                className="absolute inset-0 bg-slate-700 flex items-center justify-center"
+                className="absolute inset-0 bg-slate-800 flex items-center justify-center"
                 style={{ display: 'none' }}
               >
                 <Image className="text-slate-500" size={32} />
@@ -160,7 +160,7 @@ export default function Launches() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-slate-900 font-sans">
+    <div className="min-h-screen w-screen bg-gray-900 font-sans">
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 className="text-3xl font-bold text-white mb-8 text-left">

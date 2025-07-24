@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  -background:  #ffffff;
   --foreground: #171717;
 }
 
@@ -23,4 +23,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* In globals.css, if you don't have a separate footer file */
+
+footer {
+  background-color: #1A202C;
+  color: #a0aec0;
 }
