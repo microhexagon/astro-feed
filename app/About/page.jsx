@@ -102,14 +102,6 @@ const AboutPage = () => {
     </Link>
   </div>
 </div>
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>

@@ -1,8 +1,39 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { AlertCircle, ImageIcon } from "lucide-react";
-import { format, isToday, isTomorrow, parseISO } from 'date-fns';
+import { AlertCircle, Image } from "lucide-react";
+
+// Simple date utilities since date-fns is not available
+const formatDate = (date, isLaterSection = false) => {
+  if (isLaterSection) {
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  }
+  return date.toLocaleDateString('en-US', { 
+    weekday: 'long',
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+};
+
+const isToday = (date) => {
+  const today = new Date();
+  return date.toDateString() === today.toDateString();
+};
+
+const isTomorrow = (date) => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return date.toDateString() === tomorrow.toDateString();
+};
 
 export default function Launches() {
   const [launches, setLaunches] = useState([]);
@@ -17,8 +48,8 @@ export default function Launches() {
     try {
       setLoading(true);
       setError(null);
-      // Fetch a bit more data to ensure we have enough for "Later" even if some are filtered out
-      const res = await fetch("https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=20"); // Increased limit
+      
+      const res = await fetch("https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=20"); 
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
@@ -41,43 +72,43 @@ export default function Launches() {
   const groupedLaunches = useMemo(() => {
     const today = [];
     const tomorrow = [];
-    const laterCandidates = []; // Collect all later launches first
+    const laterCandidates = []; // Temporary array for sorting
 
     launches.forEach((launch) => {
-      const launchDate = parseISO(launch.window_start);
+      const launchDate = new Date(launch.window_start);
 
       if (isNaN(launchDate.getTime())) {
         console.warn("Invalid launch date received:", launch.window_start, launch.name);
         return;
       }
 
-      // Filter only future launches relative to now
+      
       if (launchDate > new Date()) {
           if (isToday(launchDate)) {
             today.push(launch);
           } else if (isTomorrow(launchDate)) {
             tomorrow.push(launch);
           } else {
-            laterCandidates.push(launch);
+            laterCandidates.push(launch); // Push to temporary array
           }
       }
     });
 
     // Sort by date/time
-    today.sort((a, b) => parseISO(a.window_start).getTime() - parseISO(b.window_start).getTime());
-    tomorrow.sort((a, b) => parseISO(a.window_start).getTime() - parseISO(b.window_start).getTime());
-    laterCandidates.sort((a, b) => parseISO(a.window_start).getTime() - parseISO(b.window_start).getTime());
+    today.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
+    tomorrow.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
+    laterCandidates.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
 
+    // Only show first 2 launches in Later section and first 1 in Tomorrow
     const later = laterCandidates.slice(0, 2);
+    const tomorrowLimited = tomorrow.slice(0, 1);
 
-    return { today, tomorrow, later };
+    return { today, tomorrow: tomorrowLimited, later };
   }, [launches]);
 
   const renderLaunchCard = (launch, isLaterSection = false) => {
     const imageUrl = getImageUrl(launch);
-    const launchDateTime = parseISO(launch.window_start);
-
-    const dateTimeFormat = isLaterSection ? 'MMMM do, yyyy, p' : 'PPP, p';
+    const launchDateTime = new Date(launch.window_start);
 
     return (
       <div
@@ -86,7 +117,7 @@ export default function Launches() {
       >
         <div className="flex-1 p-4 md:p-6">
           <p className="text-gray-400 text-sm mb-1">
-            {format(launchDateTime, dateTimeFormat)}
+            {formatDate(launchDateTime, isLaterSection)}
           </p>
           <h2 className="text-lg font-semibold text-white mb-2">
             {launch.name}
@@ -115,12 +146,12 @@ export default function Launches() {
                 className="absolute inset-0 bg-slate-700 flex items-center justify-center"
                 style={{ display: 'none' }}
               >
-                <ImageIcon className="text-slate-500" size={32} />
+                <Image className="text-slate-500" size={32} />
               </div>
             </div>
           ) : (
             <div className="h-full w-full bg-slate-700 flex items-center justify-center">
-              <ImageIcon className="text-slate-500" size={32} />
+              <Image className="text-slate-500" size={32} />
             </div>
           )}
         </div>
@@ -154,39 +185,41 @@ export default function Launches() {
           </div>
         ) : (
           <div className="space-y-8">
-            {/* Today Section */}
-            {groupedLaunches.today.length > 0 && (
-              <section>
-                <h2 className="text-xl font-semibold text-white mb-4">Today</h2>
-                {groupedLaunches.today.map((launch) => renderLaunchCard(launch, false))}
-              </section>
-            )}
+            {/* Today Section - Always show */}
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-4">Today</h2>
+              {groupedLaunches.today.length > 0 ? (
+                groupedLaunches.today.map((launch) => renderLaunchCard(launch, false))
+              ) : (
+                <div className="bg-slate-800 rounded-lg p-6 text-center text-gray-400">
+                  No launches scheduled for today
+                </div>
+              )}
+            </section>
 
-            {/* Tomorrow Section */}
-            {groupedLaunches.tomorrow.length > 0 && (
-              <section>
-                <h2 className="text-xl font-semibold text-white mb-4">Tomorrow</h2>
-                {groupedLaunches.tomorrow.map((launch) => renderLaunchCard(launch, false))}
-              </section>
-            )}
+            {/* Tomorrow Section - Always show */}
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-4">Tomorrow</h2>
+              {groupedLaunches.tomorrow.length > 0 ? (
+                groupedLaunches.tomorrow.map((launch) => renderLaunchCard(launch, false))
+              ) : (
+                <div className="bg-slate-800 rounded-lg p-6 text-center text-gray-400">
+                  No launches scheduled for tomorrow
+                </div>
+              )}
+            </section>
 
-            {/* Later Section */}
-            {groupedLaunches.later.length > 0 && (
-              <section>
-                <h2 className="text-xl font-semibold text-white mb-4">Later</h2>
-                {/* Ensure only the first two are mapped */}
-                {groupedLaunches.later.map((launch) => renderLaunchCard(launch, true))}
-              </section>
-            )}
-
-            {/* If no launches are found across all categories */}
-            {groupedLaunches.today.length === 0 &&
-             groupedLaunches.tomorrow.length === 0 &&
-             groupedLaunches.later.length === 0 && !loading && !error && (
-              <div className="bg-slate-800 rounded-lg p-8 text-center text-gray-300">
-                No upcoming launches found at this time. Check back later!
-              </div>
-            )}
+            {/* Later Section - Always show */}
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-4">Later</h2>
+              {groupedLaunches.later.length > 0 ? (
+                groupedLaunches.later.map((launch) => renderLaunchCard(launch, true))
+              ) : (
+                <div className="bg-slate-800 rounded-lg p-6 text-center text-gray-400">
+                  No future launches scheduled
+                </div>
+              )}
+            </section>
           </div>
         )}
       </main>
