@@ -1,11 +1,11 @@
 // app/layout.tsx
 
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Footer } from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
 
 const geistSans = GeistSans;
 const geistMono = GeistMono;
@@ -23,9 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
-       
         <div className="bg-[#1A202C] text-[#a0aec0] min-h-screen">
-          <Navbar links={["Home", "News", "Launches", "Contact", "About"]} />
+          <Navbar />
           {children}
           <Footer />
         </div>
