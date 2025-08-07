@@ -1,29 +1,35 @@
-import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
-type TeamMember = {
-  name: string;
-  role: string;
-  image: string;
-};
+interface GitHubLinksProps {
+  teamMembers: Array<{
+    id: number;
+    name: string;
+    github?: string; // GitHub link optional ho sakta hai
+  }>;
+}
 
-export const ProfileCard = ({ name, role, image }: TeamMember) => {
+const GitHubLinks: React.FC<GitHubLinksProps> = ({ teamMembers }) => {
   return (
-    <div className="bg-slate-800 rounded-lg p-6 text-center hover:bg-gray-700 transition-colors duration-300">
-      {/* Avatar with Image */}
-      <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 bg-gray-700">
-        <Image
-          src={image}
-          alt={`${name} profile picture`}
-          width={64}
-          height={64}
-          className="w-full h-full object-cover"
-        />
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex justify-center gap-6 flex-wrap">
+        {teamMembers.map((member) => (
+          member.github && (
+            <Link
+              key={member.id}
+              href={member.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
+              style={{ textDecoration: "none" }}
+            >
+              GitHub: {member.name}
+            </Link>
+          )
+        ))}
       </div>
-
-      {/* Member Info */}
-      <h3 className="text-xl font-semibold mb-2 text-white">{name}</h3>
-      <p className="text-gray-400 text-sm">{role}</p>
     </div>
   );
 };
+
+export default GitHubLinks;
