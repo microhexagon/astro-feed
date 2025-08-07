@@ -1,10 +1,11 @@
-import { Link } from "lucide-react";
 import React from "react";
-import ProfileCard from "@/components/ProfileCard/ProfileCard"
+import Link from "next/link"; 
+import Image from "next/image"; 
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import { teamMembers } from "@/data";
+import GitHubLinks from "@/components/GithubLinks/GithubLinks";
 
-
-const App = () => { 
+const AboutPage = () => {
   return (
     <main className="min-h-screen text-white bg-gray-900 font-sans">
       <div className="container mx-auto px-6 py-12">
@@ -27,7 +28,7 @@ const App = () => {
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {teamMembers.map((member) => (
-              // ProfileCard component 
+              // ProfileCard component
               <ProfileCard
                 key={member.id}
                 name={member.name}
@@ -36,44 +37,12 @@ const App = () => {
               />
             ))}
           </div>
-          <div>
-            {/* GitHub section */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex justify-center gap-6 flex-wrap">
-                <Link
-                  href="https://github.com/zahooronly"
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Zahoor Ahmed
-                </Link>
-                <Link
-                  href="https://github.com/umekalsoom68"
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Ume Kalsoom
-                </Link>
-              </div>
 
-              <div className="flex justify-center">
-                <Link
-                  href="https://github.com/aimakareem"
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Aima Kareem
-                </Link>
-              </div>
-            </div>
-          </div>
+          <GitHubLinks teamMembers={teamMembers} />
         </div>
       </div>
     </main>
   );
 };
 
-export default App; 
+export default AboutPage;
