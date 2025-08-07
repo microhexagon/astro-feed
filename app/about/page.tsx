@@ -1,7 +1,7 @@
 import { Link } from "lucide-react";
 import React from "react";
 import ProfileCard from "@/components/ProfileCard/ProfileCard"
-
+import { teamMembers } from "@/data";
 
 
 const App = () => { 
