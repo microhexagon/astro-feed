@@ -1,35 +1,44 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-interface GitHubLinksProps {
-  teamMembers: Array<{
-    id: number;
-    name: string;
-    github?: string; // GitHub link optional ho sakta hai
-  }>;
+// Define the interface for the individual props that the component expects
+interface ProfileCardProps {
+  name: string;
+  role: string;
+  image: string;
+  github?: string; // github is optional
 }
 
-const GitHubLinks: React.FC<GitHubLinksProps> = ({ teamMembers }) => {
+// The component now destructures the individual props
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, image, github }) => {
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="flex justify-center gap-6 flex-wrap">
-        {teamMembers.map((member) => (
-          member.github && (
-            <Link
-              key={member.id}
-              href={member.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-              style={{ textDecoration: "none" }}
-            >
-              GitHub: {member.name}
-            </Link>
-          )
-        ))}
+    <div className="bg-slate-800 p-6 rounded-lg text-center flex flex-col items-center">
+      <div className="relative w-24 h-24 mb-4">
+        {/* Use the image and name props */}
+        <Image
+          src={image}
+          alt={name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
+        />
       </div>
+      {/* Use the name and role props */}
+      <h3 className="text-xl font-bold mb-1">{name}</h3>
+      <p className="text-gray-400 mb-4">{role}</p>
+      {/* Conditionally render the GitHub link if the prop exists */}
+      {github && (
+        <Link
+          href={github}
+          target="_blank"
+          className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+        >
+          GitHub
+        </Link>
+      )}
     </div>
   );
 };
 
-export default GitHubLinks;
+export default ProfileCard;

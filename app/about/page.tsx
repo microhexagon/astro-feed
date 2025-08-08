@@ -1,9 +1,7 @@
 import React from "react";
-import Link from "next/link"; 
-import Image from "next/image"; 
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import { teamMembers } from "@/data";
-import GitHubLinks from "@/components/GithubLinks/GithubLinks";
+import GithubLinks from "@/components/GithubLinks/GithubLinks"
 
 const AboutPage = () => {
   return (
@@ -23,11 +21,11 @@ const AboutPage = () => {
 
         {/* Our Team Section */}
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Team</h2>
+          <h2 className="text-3xl font-bold mb-12 text-left">Our Team</h2>
 
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {teamMembers.map((member) => (
+          {teamMembers.map((member) => (
               // ProfileCard component
               <ProfileCard
                 key={member.id}
@@ -37,8 +35,7 @@ const AboutPage = () => {
               />
             ))}
           </div>
-
-          <GitHubLinks teamMembers={teamMembers} />
+          <GithubLinks teamMembers={teamMembers} />
         </div>
       </div>
     </main>
