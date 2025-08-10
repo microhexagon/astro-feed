@@ -1,17 +1,16 @@
 import React from "react";
-import Link from "next/link";
+import ProfileCard from "@/components/ProfileCard/ProfileCard";
 import { teamMembers } from "@/data";
-// import { ProfileCard } from "@/components/ProfileCard/ProfileCard";
-import Image from "next/image";
+import GithubLinks from "@/components/GithubLinks/GithubLinks"
 
 const AboutPage = () => {
   return (
-    <main className="min-h-screen text-white">
+    <main className="min-h-screen text-white bg-gray-900 font-sans">
       <div className="container mx-auto px-6 py-12">
         {/* About Section */}
         <div className="max-w-6xl mx-auto mb-16">
-          <h1 className="text-4xl font-bold mb-8">About AstroFeed</h1>
-          <p className="text-white text-lg leading-relaxed">
+          <h1 className="text-4xl font-bold mb-8 text-left">About AstroFeed</h1>
+          <p className="text-white text-lg leading-relaxed ">
             AstroFeed is a platform dedicated to space exploration enthusiasts.
             Our mission is to provide a comprehensive and engaging experience
             for users interested in the latest discoveries, missions, and news
@@ -24,89 +23,21 @@ const AboutPage = () => {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-left">Our Team</h2>
 
-          {/*  Cards  */}
+          {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {teamMembers.map((member) => (
-              <div
+          {teamMembers.map((member) => (
+              // ProfileCard component
+              <ProfileCard
                 key={member.id}
-                className="bg-slate-800 rounded-lg p-6 text-center hover:bg-gray-700 transition-colors duration-300"
-              >
-                {/* Avatar with Image */}
-                <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 bg-gray-700">
-                  <Image
-                    src={member.image}
-                    alt={`${member.name} profile picture`}
-                    width={64}
-                    height={64}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Member Info */}
-                <h3 className="text-xl font-semibold mb-2 text-white">
-                  {member.name}
-                </h3>
-                <p className="text-gray-400 text-sm">{member.role}</p>
-              </div>
-              // <ProfileCard
-              //   key={member.id}
-              //   name={member.name}
-              //   role={member.role}
-              //   image={member.image}
-              // />
+                name={member.name}
+                role={member.role}
+                image={member.image}
+              />
             ))}
           </div>
-          <div>
-            {/* GitHub section */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="flex justify-center gap-6">
-                <Link
-                  href=" https://github.com/EthanCarter "
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm "
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Ethan Carter
-                </Link>
-                <Link
-                  href="https://github.com/LiamHarper"
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm"
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Liam Harper
-                </Link>
-              </div>
-
-              <div className="flex justify-center">
-                <Link
-                  href="https://github.com/OliviaBennett"
-                  target="_blank"
-                  className="bg-slate-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-300 text-sm "
-                  style={{ textDecoration: "none" }}
-                >
-                  GitHub: Olivia Bennett
-                </Link>
-              </div>
-            </div>
-          </div>
+          <GithubLinks teamMembers={teamMembers} />
         </div>
       </div>
-      {/* <ProfileCard
-        name={"Kalsoom"}
-        role={"Software Engineer"}
-        image={"https://via.placeholder.com/64"}
-      />
-      <ProfileCard
-        name={"Kalsoom"}
-        role={"Software Engineer"}
-        image={"https://via.placeholder.com/64"}
-      />
-      <ProfileCard
-        name={"Kalsoom"}
-        role={"Software Engineer"}
-        image={"https://via.placeholder.com/64"}
-      /> */}
     </main>
   );
 };

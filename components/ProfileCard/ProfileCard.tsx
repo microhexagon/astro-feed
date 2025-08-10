@@ -1,29 +1,44 @@
-import Image from "next/image";
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
-type TeamMember = {
+// Define the interface for the individual props that the component expects
+interface ProfileCardProps {
   name: string;
   role: string;
   image: string;
-};
+  github?: string; // github is optional
+}
 
-export const ProfileCard = ({ name, role, image }: TeamMember) => {
+// The component now destructures the individual props
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, image, github }) => {
   return (
-    <div className="bg-slate-800 rounded-lg p-6 text-center hover:bg-gray-700 transition-colors duration-300">
-      {/* Avatar with Image */}
-      <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4 bg-gray-700">
+    <div className="bg-slate-800 p-6 rounded-lg text-center flex flex-col items-center">
+      <div className="relative w-24 h-24 mb-4">
+        {/* Use the image and name props */}
         <Image
           src={image}
-          alt={`${name} profile picture`}
-          width={64}
-          height={64}
-          className="w-full h-full object-cover"
+          alt={name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
         />
       </div>
-
-      {/* Member Info */}
-      <h3 className="text-xl font-semibold mb-2 text-white">{name}</h3>
-      <p className="text-gray-400 text-sm">{role}</p>
+      {/* Use the name and role props */}
+      <h3 className="text-xl font-bold mb-1">{name}</h3>
+      <p className="text-gray-400 mb-4">{role}</p>
+      {/* Conditionally render the GitHub link if the prop exists */}
+      {github && (
+        <Link
+          href={github}
+          target="_blank"
+          className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-full transition-colors duration-300"
+        >
+          GitHub
+        </Link>
+      )}
     </div>
   );
 };
+
+export default ProfileCard;
