@@ -31,7 +31,7 @@ export default function ContactPage() {
       <section className="bg-black text-white px-4 py-10 md:px-20">
         <div className="text-center mb-10">
           <h1 className="text-3xl md:text-5xl font-bold">Contact Us</h1>
-          <p className="text-gray-400 mt-2">We’d love to hear from you!</p>
+          <p className="text-gray-400 mt-2">We&apos;d love to hear from you!</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
