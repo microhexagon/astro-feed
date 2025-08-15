@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "via.placeholder.com",
       },
+      {
+        hostname: "apod.nasa.gov",
+      },
     ],
   },
 };
