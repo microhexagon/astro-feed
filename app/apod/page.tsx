@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
 // Define the type for the data expected from the NASA APOD API.
@@ -82,11 +83,15 @@ export default function PictureOfTheDay() {
           <div className="bg-slate-800 rounded-lg overflow-hidden shadow-2xl">
             {/* Conditionally render an image or an iframe for video. */}
             {apodData.media_type === "image" ? (
-              <img
-                src={apodData.url}
-                alt={apodData.title}
-                className="w-full h-80 sm:h-96 object-cover"
-              />
+              <div className="h-80 w-full sm:h-96 ">
+                <Image
+                  src={apodData.url}
+                  alt={apodData.title}
+                  className="object-cover"
+                  width={1024}
+                  height={256}
+                />
+              </div>
             ) : apodData.media_type === "video" ? (
               <div className="w-full h-80 sm:h-96 bg-black flex items-center justify-center">
                 <iframe
