@@ -8,8 +8,8 @@ export default function Featured() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 items-center">
         <div>
           <Image
-            src="/assets/featured bg imag.png"
-            alt="bg"
+            src="/assets/featured-bg-image.png"
+            alt="Feature background image that displays galaxy stars etc."
             className="h-64 md:h-80 w-full object-cover rounded-lg"
             height={64}
             width={64}
@@ -27,7 +27,8 @@ export default function Featured() {
             <span className="block font-light text-gray-400 mt-2">
               This breathtaking image captures the edge of a nearby young
               star-forming region called NGC 3324 in the Carina Nebula. The
-              &apos;Cosmic Cliffs&apos; reveal previously hidden regions of star birth.
+              &apos;Cosmic Cliffs&apos; reveal previously hidden regions of star
+              birth.
             </span>
           </p>
 
