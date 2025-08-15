@@ -33,12 +33,17 @@ export default function NewsPage() {
             className="bg-gray-800  shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row"
           >
             {/* Image Section */}
-            <Image
-              src={card.url}
-              alt={card.title}
-              className="bg-gray-800 w-full md:w-1/2 h-64 object-cover rounded-xl"
-              fill
-            />
+
+            <div className="h-32 w-64 overflow-hidden bg-gray-800 rounded-xl">
+              <Image
+                src={card.url}
+                alt={card.title}
+                className="object-cover"
+                height={100}
+                width={250}
+
+              />
+            </div>
 
             {/* Text Section */}
             <div className="p-6 flex flex-col justify-center w-full md:w-1/2 bg-gray-800">
