@@ -1,3 +1,4 @@
+// utils/dateUtils.ts
 export const formatDate = (date: Date, isLaterSection = false): string => {
     if (isLaterSection) {
       return date.toLocaleDateString('en-US', {
@@ -27,4 +28,13 @@ export const formatDate = (date: Date, isLaterSection = false): string => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     return date.toDateString() === tomorrow.toDateString();
+  };
+  
+  // utils/launchUtils.ts
+  import { Launch } from '@/data/type';
+  
+  export const getImageUrl = (launch: Launch): string | null => {
+    if (launch.image) return launch.image;
+    if (launch.rocket?.configuration?.image_url) return launch.rocket.configuration.image_url;
+    return null;
   };
