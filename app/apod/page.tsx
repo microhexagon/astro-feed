@@ -11,18 +11,15 @@ interface ApodData {
 }
 
 export default function PictureOfTheDay() {
-  // Use the ApodData type to define the state for the API data.
   const [apodData, setApodData] = useState<ApodData | null>(null);
   const [loading, setLoading] = useState(true);
-  // Define state for error messages, which can be a string or null.
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data when the component mounts.
     fetchAPOD();
   }, []);
 
-  // API fetch function to get the Picture of the Day.
+  // API fetch function
   const fetchAPOD = async () => {
     try {
       setLoading(true);
@@ -33,12 +30,10 @@ export default function PictureOfTheDay() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // Cast the fetched data to the ApodData type.
       const data: ApodData = await response.json();
       setApodData(data);
     } catch (err) {
-      // Handle different types of errors.
+      // Handle  errors.
       if (err instanceof Error) {
         setError("Failed to fetch astronomy data");
         console.error("Error fetching APOD:", err.message);
@@ -47,7 +42,6 @@ export default function PictureOfTheDay() {
         console.error("Unknown error:", err);
       }
     } finally {
-      // Always set loading to false after the fetch is complete.
       setLoading(false);
     }
   };
@@ -58,16 +52,14 @@ export default function PictureOfTheDay() {
         <h1 className="text-3xl font-bold text-white mb-8 text-left">
           Astronomy Picture of the Day
         </h1>
-
-        {/* Conditional rendering based on loading, error, or data state. */}
         {loading ? (
-          // Show a loading spinner and message.
+          // Show  loading 
           <div className="bg-slate-800 rounded-lg p-8 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
             <p className="text-gray-300">Loading...</p>
           </div>
         ) : error ? (
-          // Show an error message and a retry button.
+          //  retry button.
           <div className="bg-red-900/20 border border-red-500 rounded-lg p-8 text-center">
             <p className="text-red-400">{error}</p>
             <button
@@ -78,26 +70,17 @@ export default function PictureOfTheDay() {
             </button>
           </div>
         ) : apodData ? (
-          // Display the APOD content once data is available.
+          // Description
           <div className="bg-slate-800 rounded-lg overflow-hidden shadow-2xl">
-            {/* Conditionally render an image or an iframe for video. */}
+            {/* iframe for image*/}
             {apodData.media_type === "image" ? (
               <img
                 src={apodData.url}
                 alt={apodData.title}
                 className="w-full h-80 sm:h-96 object-cover"
               />
-            ) : apodData.media_type === "video" ? (
-              <div className="w-full h-80 sm:h-96 bg-black flex items-center justify-center">
-                <iframe
-                  src={apodData.url}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allowFullScreen
-                  title={apodData.title}
-                />
-              </div>
-            ) : null}
+            ): ( 
+               null )}
 
             <div className="p-6">
               <h2 className="text-2xl font-bold text-white mb-2">
