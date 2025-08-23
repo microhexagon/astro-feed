@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useLaunches } from "@/data/UseLaunch";
-import LaunchSection from "@/components/Launches/section";
-import LoadingSpinner from "@/components/Launches/Loading";
-import ErrorDisplay from "@/components/Launches/error";
+import Section from "@/components/Launches/section";
+import  Loading from "@/components/Launches/Loading";
+import  ErrorDisplay  from "@/components/Launches/error";
 
 export default function LaunchSchedule() {
   const { loading, error, groupedLaunches, refetch } = useLaunches();
@@ -17,24 +17,24 @@ export default function LaunchSchedule() {
         </h1>
 
         {loading ? (
-          <LoadingSpinner />
+          <Loading />
         ) : error ? (
           <ErrorDisplay error={error} onRetry={refetch} />
         ) : (
           <div className="space-y-8">
-            <LaunchSection 
+            <Section 
               title="Today" 
               launches={groupedLaunches.today}
               emptyMessage="No launches scheduled for today"
             />
             
-            <LaunchSection 
+            <Section 
               title="Tomorrow" 
               launches={groupedLaunches.tomorrow}
               emptyMessage="No launches scheduled for tomorrow"
             />
             
-            <LaunchSection 
+            <Section 
               title="Later" 
               launches={groupedLaunches.later}
               isLaterSection={true}

@@ -3,12 +3,12 @@
 import React from "react";
 import { AlertCircle } from "lucide-react";
 
-interface ErrorDisplayProps {
+interface ErrorsProps{
   error: string;
   onRetry: () => void;
 }
 
-export default function ErrorDisplay({ error, onRetry }: ErrorDisplayProps) {
+export default function ErrorDisplay({ error, onRetry }: ErrorsProps) {
   return (
     <div className="bg-red-900/20 border border-red-500 rounded-lg p-8 text-center">
       <AlertCircle className="mx-auto mb-4 text-red-400" size={32} />

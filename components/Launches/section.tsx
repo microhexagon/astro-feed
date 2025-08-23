@@ -11,7 +11,7 @@ interface LaunchSectionProps {
   emptyMessage?: string;
 }
 
-export default function LaunchSection({ 
+export default function Section({ 
   title, 
   launches, 
   isLaterSection = false,
