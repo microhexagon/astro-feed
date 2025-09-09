@@ -1,10 +1,13 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 // rewrite whole page code
 import React, { useState, useEffect, useMemo } from "react";
 import { AlertCircle, Image } from "lucide-react";
 
 // Simple date utilities since date-fns is not available
-const formatDate = (date, isLaterSection = false) => {
+const formatDate = (date: Date, isLaterSection = false) => {
   if (isLaterSection) {
     return date.toLocaleDateString("en-US", {
       year: "numeric",
@@ -24,12 +27,12 @@ const formatDate = (date, isLaterSection = false) => {
   });
 };
 
-const isToday = (date) => {
+const isToday = (date: Date) => {
   const today = new Date();
   return date.toDateString() === today.toDateString();
 };
 
-const isTomorrow = (date) => {
+const isTomorrow = (date: Date) => {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   return date.toDateString() === tomorrow.toDateString();
@@ -38,7 +41,7 @@ const isTomorrow = (date) => {
 export default function Launches() {
   const [launches, setLaunches] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchLaunches();
@@ -65,7 +68,10 @@ export default function Launches() {
     }
   };
 
-  const getImageUrl = (launch) => {
+  const getImageUrl = (launch: {
+    image: any;
+    rocket: { configuration: { image_url: any } };
+  }) => {
     if (launch.image) return launch.image;
     if (launch.rocket?.configuration?.image_url)
       return launch.rocket.configuration.image_url;
@@ -73,12 +79,12 @@ export default function Launches() {
   };
 
   const groupedLaunches = useMemo(() => {
-    const today = [];
-    const tomorrow = [];
-    const laterCandidates = [];
+    const today: any[] = [];
+    const tomorrow: any[] = [];
+    const laterCandidates: any[] = [];
 
-    launches.forEach((launch) => {
-      const launchDate = new Date(launch.window_start);
+    launches.forEach((launch: any) => {
+      const launchDate = new Date(launch?.window_start);
 
       if (isNaN(launchDate.getTime())) {
         console.warn(
@@ -121,7 +127,7 @@ export default function Launches() {
     return { today, tomorrow: tomorrowLimited, later };
   }, [launches]);
 
-  const renderLaunchCard = (launch, isLaterSection = false) => {
+  const renderLaunchCard = (launch: any, isLaterSection = false) => {
     const imageUrl = getImageUrl(launch);
     const launchDateTime = new Date(launch.window_start);
 
@@ -151,12 +157,6 @@ export default function Launches() {
                 src={imageUrl}
                 alt={launch.name || "Rocket launch"}
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  if (e.currentTarget.nextElementSibling) {
-                    e.currentTarget.nextElementSibling.style.display = "flex";
-                  }
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-l from-transparent to-slate-800/20"></div>
               <div
