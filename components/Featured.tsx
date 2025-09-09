@@ -2,17 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Featured() {
   return (
-    <div className="mt-10 mb-10 pt-5 pb-5 px-4">
+    <div className="p-10  px-4 max-h-[50vh]">
       <h2 className="text-2xl font-bold">Featured</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 items-center">
-        <div>
+        <div className="w-full min-h-[40vh] relative rounded-xl overflow-hidden">
           <Image
             src="/assets/featured-bg-image.png"
             alt="Feature background image that displays galaxy stars etc."
-            className="h-64 md:h-80 w-full object-cover rounded-lg"
-            height={64}
-            width={64}
+            className="object-cover"
+            fill
           />
         </div>
 
