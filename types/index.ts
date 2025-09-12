@@ -1,5 +1,6 @@
 export type TeamMember = {
   id: number;
+  post:string;
   name: string;
   role: string;
   avatar: string;

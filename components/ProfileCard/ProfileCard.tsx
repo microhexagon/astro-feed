@@ -2,20 +2,20 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Define the interface for the individual props that the component expects
+// Define the interface for  props 
 interface ProfileCardProps {
   name: string;
+  post:string;
   role: string;
   image: string;
-  github?: string; // github is optional
+  github?: string; 
 }
 
-// The component now destructures the individual props
-const ProfileCard: React.FC<ProfileCardProps> = ({ name, role, image, github }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ name, post, role, image, github }) => {
   return (
     <div className="bg-slate-800 p-6 rounded-lg text-center flex flex-col items-center">
       <div className="relative w-24 h-24 mb-4">
-        {/* Use the image and name props */}
+        {/* Use the image a */}
         <Image
           src={image}
           alt={name}

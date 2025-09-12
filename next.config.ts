@@ -5,7 +5,21 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "via.placeholder.com",
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+      // Add NASA APOD image domains
+      {
+        protocol: 'https',
+        hostname: 'apod.nasa.gov',
+        port: '',
+        pathname: '/apod/image/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.nasa.gov',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

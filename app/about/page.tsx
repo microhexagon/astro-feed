@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
-import { teamMembers } from "@/data";
+import { teamMembers } from "@/data/teamMembers";
 import GithubLinks from "@/components/GithubLinks/GithubLinks"
 
 const AboutPage = () => {
@@ -29,6 +29,7 @@ const AboutPage = () => {
               // ProfileCard component
               <ProfileCard
                 key={member.id}
+                post={member.post}
                 name={member.name}
                 role={member.role}
                 image={member.image}
