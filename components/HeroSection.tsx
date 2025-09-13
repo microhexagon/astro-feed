@@ -8,34 +8,28 @@ export function Herosection() {
         backgroundImage: "url('/assets/herosection-bg.png')",
       }}
     >
-      {/* we'll add image in div that would place that image as absolute so it will automatically be placed on background. */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60 z-0" />
-      <div>
-        <h2 className=" font-bold text-3xl sm:text-4xl md:text-5xl text-white drop-shadow-lg">
+
+      {/* Content */}
+      <div className="relative z-10 text-center max-w-2xl">
+        <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl text-white drop-shadow-lg">
           Explore the Cosmos with AstroFeed
         </h2>
-        <p className="text-white text-base sm:text-lg md:text-xl mt-4 leading-relaxed drop-shadow-lg text-center sm:text-left">
-          <span className="block">
-            Your gateway to the wonders of space exploration. Discover the
-            latest astronomy news, breathtaking images,
-          </span>
-          <span className="block lg:pl-12">and upcoming launch schedules.</span>
+        <p className="text-white text-base sm:text-lg md:text-xl mt-4 leading-relaxed drop-shadow-lg">
+          Your gateway to the wonders of space exploration. Discover the latest
+          astronomy news, breathtaking images, and upcoming launch schedules.
         </p>
 
-        <div className="flex justify-center m-3 drop-shadow-lg">
+        <div className="flex justify-center mt-6 drop-shadow-lg">
           <Link href="/news">
-            <button className="flex cursor-pointer justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28  hover:scale-110 transition ">
+            <button className="flex cursor-pointer justify-center items-center bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-32 hover:scale-110 transition">
               Get Started
             </button>
           </Link>
-          {/* <Link
-            href={"/news"}
-            className="flex justify-center items-center bg-blue-400  hover:bg-gray-600  text-white rounded-lg h-10 w-28  hover:scale-110 transition "
-          >
-            Get Started
-          </Link> */}
         </div>
       </div>
     </section>
   );
 }
+
