@@ -15,55 +15,43 @@ const navbarLinks: NavbarProps[] = [
   { title: "Launches", link: "/launches" },
   { title: "Contact", link: "/contact" },
 ];
-export function Navbar() {
-  // export default function Navbar({ links }: NavbarProps) {
 
-  const [showSearch, setShowSearch] = useState(false);
+export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="bg-gray-800 text-amber-50 px-6 py-4 border-b border-white">
-      <div className="flex items-center justify-between flex-wrap">
-        {/* 🔹 Logo */}
-        <div className="flex items-center space-x-2">
-          {/* <img
-            src="/assets/astrofeed logo navbar.png"
-            alt="logo"
-            className="h-4 w-4"
-          /> */}
+      <div className="flex items-center justify-between">
+        {/* Logo + Title */}
+        <div className="flex items-center gap-2">
           <Image
             src="/assets/astrofeed logo navbar.png"
             alt="logo"
-            className="h-4 w-4"
-            height={16}
-            width={16}
+            height={28}
+            width={28}
+            className="h-7 w-7"
           />
-          <h1 className="font-semibold">
+          <h1 className="font-semibold text-lg">
             <Link href="/">Astrofeed</Link>
           </h1>
         </div>
 
         {/* 🔹 Desktop links (only md and up) */}
-        <div className="hidden md:flex items-center space-x-6 mt-2 md:mt-0">
+        <div className="hidden md:flex items-center space-x-6">
           {navbarLinks.map((link, index) => (
             <Link key={index} href={link.link}>
               {link.title}
             </Link>
           ))}
-          {/* Search icon for desktop */}
+
+          {/* Search icon → APOD page */}
           <div className="bg-gray-700 rounded-lg h-7 w-7 flex justify-center items-center">
-            <FaSearch
-              onClick={() => setShowSearch(!showSearch)}
-              className="cursor-pointer"
-            />
+            <Link href="/apod">
+              <FaSearch className="cursor-pointer" />
+            </Link>
           </div>
-          {showSearch && (
-            <input
-              type="text"
-              placeholder="Search..."
-              className="ml-2 px-3 py-1 rounded bg-gray-800 border border-gray-600 text-white focus:outline-none"
-            />
-          )}
+
+          {/* Profile icon */}
           <div className="bg-gray-700 rounded-lg h-7 w-7 flex justify-center items-center">
             <Link href="/about">
               <CgProfile className="h-5 w-5" />
@@ -72,27 +60,17 @@ export function Navbar() {
         </div>
 
         {/* ✅ Mobile Icons and Hamburger */}
-        <div className="flex flex-col md:hidden gap-2">
-          {/* Top Row: Icons */}
-          <div className="flex items-center gap-3">
-            <FaSearch
-              onClick={() => setShowSearch(!showSearch)}
-              className="cursor-pointer"
-            />
+        <div className="flex md:hidden items-center gap-3">
+          <Link href="/apod">
+            <FaSearch className="cursor-pointer" />
+          </Link>
+          <Link href="/about">
             <CgProfile className="h-5 w-5" />
-            <GiHamburgerMenu
-              className="text-xl cursor-pointer"
-              onClick={() => setMenuOpen(!menuOpen)}
-            />
-          </div>
-          {/* ✅ Conditionally Render Search Input */}
-          {showSearch && (
-            <input
-              type="text"
-              placeholder="Search..."
-              className="px-3 py-1 rounded bg-gray-800 border border-gray-600 text-white focus:outline-none"
-            />
-          )}
+          </Link>
+          <GiHamburgerMenu
+            className="text-xl cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+          />
         </div>
       </div>
 
@@ -113,3 +91,4 @@ export function Navbar() {
     </nav>
   );
 }
+
