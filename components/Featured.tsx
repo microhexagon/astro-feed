@@ -33,7 +33,7 @@ export default function Featured() {
 
           <div className="flex justify-end mt-4">
             <Link href="/apod">
-              <button className="bg-blue-400 hover:bg-gray-600 text-white rounded-lg h-10 w-44  hover:scale-110 transition">
+              <button className="bg-blue-400  cursor-pointer hover:bg-gray-600 text-white rounded-lg h-10 w-44  hover:scale-110 transition">
                 View APOD
               </button>
             </Link>
