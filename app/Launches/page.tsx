@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
 import React from "react";
-import { useLaunches } from "@/data/UseLaunch";
-import Section from "@/components/Launches/section";
-import  Loading from "@/components/Launches/Loading";
-import  ErrorDisplay  from "@/components/Launches/error";
+import { LaunchSchedule } from "@/data/UseLaunch"; 
+import Section from "@/components/Launches/section"; 
+import Loading from "@/components/Launches/Loading"; 
+import ErrorDisplay from "@/components/Launches/error"; 
 
-export default function LaunchSchedule() {
-  const { loading, error, groupedLaunches, refetch } = useLaunches();
+export default function Launches() {
+  const { loading, error, groupedLaunches, refetch } = LaunchSchedule();
 
   return (
     <div className="min-h-screen bg-slate-900 font-sans">
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-white mb-8 text-left">
+      <div className="max-w-4xl mx-auto py-8 sm:p-4 lg:p-8">
+        <h1 className="text-4xl font-bold text-white mb-8 text-left">
           Upcoming Launches
         </h1>
 
@@ -22,27 +22,15 @@ export default function LaunchSchedule() {
           <ErrorDisplay error={error} onRetry={refetch} />
         ) : (
           <div className="space-y-8">
-            <Section 
-              title="Today" 
-              launches={groupedLaunches.today}
-              emptyMessage="No launches scheduled for today"
-            />
-            
-            <Section 
-              title="Tomorrow" 
-              launches={groupedLaunches.tomorrow}
-              emptyMessage="No launches scheduled for tomorrow"
-            />
-            
-            <Section 
-              title="Later" 
-              launches={groupedLaunches.later}
-              isLaterSection={true}
-              emptyMessage="No future launches scheduled"
-            />
+            <section>
+              <h2 className="text-xl font-semibold text-white mb-4">Today</h2>
+              <Section launches={groupedLaunches.today}
+              title ="today"
+              /> 
+            </section>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

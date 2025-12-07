@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Launch, LaunchResponse, GroupedLaunches } from "@/data/type";
 import { isToday, isTomorrow } from "@/data/utilityfunctions";
 
-export const useLaunches = () => {
+export const LaunchSchedule = () => {
   const [launches, setLaunches] = useState<Launch[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -13,7 +13,7 @@ export const useLaunches = () => {
     try {
       setLoading(true);
       setError(null);
-     
+      
       const res = await fetch("https://ll.thespacedevs.com/2.2.0/launch/upcoming/?limit=20");
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
@@ -54,7 +54,6 @@ export const useLaunches = () => {
       }
     });
 
-    // Sort by date/time
     today.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
     tomorrow.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
     laterCandidates.sort((a, b) => new Date(a.window_start).getTime() - new Date(b.window_start).getTime());
