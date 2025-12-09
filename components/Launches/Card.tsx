@@ -1,62 +1,83 @@
 "use client";
-
 import React from "react";
-import { Image } from "lucide-react";
 import { Launch } from "@/data/type";
-import { formatDate } from "@/data/utilityfunctions";
 
 interface LaunchCardProps {
   launch: Launch;
   isLaterSection?: boolean;
 }
 
-const getImageUrl = (launch: Launch): string | null => {
-  if (launch.image) return launch.image;
-  if (launch.rocket?.configuration?.image_url) return launch.rocket.configuration.image_url;
-  return null;
-};
-
 export default function LaunchCard({ launch, isLaterSection = false }: LaunchCardProps) {
-  const imageUrl = getImageUrl(launch);
-  const launchDateTime = new Date(launch.window_start);
+  // Format date and time
+  const formatDateTime = (): string => {
+    const launchDate = new Date(launch.net);
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    const hours = launchDate.getHours();
+    const minutes = launchDate.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    // Check if today
+    const today = new Date();
+    const isToday = launchDate.getDate() === today.getDate() &&
+                    launchDate.getMonth() === today.getMonth() &&
+                    launchDate.getFullYear() === today.getFullYear();
+    
+    // Check if tomorrow
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const isTomorrow = launchDate.getDate() === tomorrow.getDate() &&
+                       launchDate.getMonth() === tomorrow.getMonth() &&
+                       launchDate.getFullYear() === tomorrow.getFullYear();
+    
+    if (isToday) {
+      return `Today, ${formattedHours}:${formattedMinutes} ${ampm}`;
+    } else if (isTomorrow) {
+      return `Tomorrow, ${formattedHours}:${formattedMinutes} ${ampm}`;
+    } else {
+      return `${months[launchDate.getMonth()]} ${launchDate.getDate()}, ${launchDate.getFullYear()} at ${formattedHours}:${formattedMinutes} ${ampm}`;
+    }
+  };
 
   return (
-    <div className="bg-slate-800 rounded-lg overflow-hidden shadow-sm flex flex-col md:flex-row mb-4">
-      <div className="flex-1 p-4 md:p-6">
-        <p className="text-gray-400 text-sm mb-1">
-          {formatDate(launchDateTime, isLaterSection)}
-        </p>
-        <h2 className="text-lg font-semibold text-white mb-2">
-          {launch.name}
-        </h2>
-        <p className="text-gray-400 text-sm line-clamp-2">
-          Launch Site: {launch.pad?.location?.name || "Unknown Location"}, Mission: {launch.mission?.description || "No mission description available."}
-        </p>
-      </div>
-
-      <div className="w-full h-32 md:w-40 md:h-auto flex-shrink-0">
-        {imageUrl ? (
-          <div className="h-full w-full bg-slate-700 relative">
-            <img
-              src={imageUrl}
-              alt={launch.name || "Rocket launch"}
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.currentTarget as HTMLImageElement;
-                target.style.display = 'none';
-                if (target.parentNode) {
-                  const parent = target.parentNode as HTMLElement;
-                  parent.innerHTML = '<div class="h-full w-full bg-slate-700 flex items-center justify-center"><svg class="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"></path></svg></div>';
-                }
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-slate-800/20"></div>
+    <div className="bg-gradient-to-r from-slate-800/50 to-slate-900/50 rounded-lg overflow-hidden border border-slate-700/50 hover:border-blue-500/50 transition-all duration-300 mb-6">
+      <div className="flex flex-col md:flex-row">
+        {/* Left Side - Content */}
+        <div className="flex-1 p-6">
+          <div className="text-slate-400 text-sm mb-2">
+            {formatDateTime()}
           </div>
-        ) : (
-          <div className="h-full w-full bg-slate-700 flex items-center justify-center">
-            <Image className="text-slate-500" size={32} />
-          </div>
-        )}
+          
+          <h3 className="text-xl font-bold text-white mb-3">
+            {launch.name}
+          </h3>
+          
+          <p className="text-slate-300 text-sm leading-relaxed">
+            Launch Site: {launch.pad?.location?.name || 'Unknown'}. 
+            Mission: {launch.mission?.description 
+              ? launch.mission.description.length > 150 
+                ? launch.mission.description.slice(0, 150) + '...' 
+                : launch.mission.description
+              : 'No description available'}
+          </p>
+        </div>
+        
+        {/* Right Side - Image */}
+        <div className="md:w-48 h-48 md:h-auto flex-shrink-0">
+          <img 
+            src={launch.image || 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=400&h=300&fit=crop'} 
+            alt={launch.name}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?w=400&h=300&fit=crop';
+            }}
+          />
+        </div>
       </div>
     </div>
   );
