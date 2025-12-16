@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
     role: "Frontend Developer",
     avatar: "AK",
     image: "/assets/aimakareem.jpg",
-    github: "https://github.com/aimakareem ",
+    github: "https://github.com/aimakareem",
   },
   {
     id: 3,
@@ -23,6 +23,6 @@ export const teamMembers: TeamMember[] = [
     role: "Frontend Developer",
     avatar: "ZA",
     image: "/assets/zahoorahmed.jpg",
-    github: "https://github.com/zahooronly ",
+    github: "https://github.com/zahooray",
   },
 ];
