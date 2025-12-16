@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="bg-[#1A202C] text-[#a0aec0] min-h-screen">
+        <div className=" text-[#a0aec0] min-h-screen">
           <Navbar />
           {children}
           <Footer />

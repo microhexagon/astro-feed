@@ -95,51 +95,54 @@ export default function ContactPage() {
 
           {/* 🖼️ Right Side Image */}
           <div className="relative">
-            <section
-              className="relative h-[620px] bg-cover bg-center flex items-center justify-center px-4 py-6"
-              style={{
-                backgroundImage: "url('/assets/herosection-bg.png')",
-              }}
-            >
-              {/* Main Content in the Center */}
-              <div className="text-center text-white max-w-2xl">
-                <h1 className="text-4xl mb-4 font-bold  drop-shadow-lg ">
-                  {" "}
-                  Get in Touch
-                </h1>
-                <h2 className="text-2xl font-semibold  drop-shadow-lg mt-2">
-                  Explore the Cosmos with AstroFeed
-                </h2>
-                <p className="mt-4 text-lg font-light  drop-shadow-lg">
-                  Your gateway to the wonders of space exploration. Discover the
-                  latest astronomy news, breathtaking images, <br /> and
-                  upcoming launch schedules.
-                </p>
-                <p className="font-bold text-2xl mt-2">Address</p>
-                <p>AstroFeed HQ, 123 Galaxy Avenue, Space City, Earth 00042</p>
-                <p className="font-bold text-2xl mt-2">Email</p>
-                <p>contact@astrofeed.com</p>
-              </div>
+  <section
+    className="relative h-[620px] bg-cover bg-center flex items-center justify-center px-4 py-6"
+    style={{
+      backgroundImage: "url('/assets/herosection-bg.png')",
+    }}
+  >
+    {/* Dark Overlay */}
+    <div className="absolute inset-0 bg-black/50"></div>
 
-              {/* Right Side: Social Icons and Fact Box */}
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-6">
-                {/* Social Icons */}
-                <div className="flex flex-col gap-4 pr-1">
-                  <a href="#">
-                    <FiTwitter className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
-                  </a>
-                  <a href="#">
-                    <FaInstagram className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
-                  </a>
-                  <a href="#">
-                    <TiSocialFacebookCircular className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
-                  </a>
-                </div>
-              </div>
-            </section>
-          </div>
+    {/* Main Content in the Center */}
+    <div className="relative z-10 text-center text-white max-w-2xl">
+      <h1 className="text-4xl mb-4 font-bold drop-shadow-lg">
+        Get in Touch
+      </h1>
+      <h2 className="text-2xl font-semibold drop-shadow-lg mt-2">
+        Explore the Cosmos with AstroFeed
+      </h2>
+      <p className="mt-4 text-lg font-light drop-shadow-lg">
+        Your gateway to the wonders of space exploration. Discover the
+        latest astronomy news, breathtaking images, <br /> and
+        upcoming launch schedules.
+      </p>
+      <p className="font-bold text-2xl mt-2">Address</p>
+      <p>AstroFeed HQ, 123 Galaxy Avenue, Space City, Earth 00042</p>
+      <p className="font-bold text-2xl mt-2">Email</p>
+      <p>contact@astrofeed.com</p>
+    </div>
+
+    {/* Right Side: Social Icons and Fact Box */}
+    <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-6 z-10">
+      <div className="flex flex-col gap-4 pr-1">
+        <a href="#">
+          <FiTwitter className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
+        </a>
+        <a href="#">
+          <FaInstagram className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
+        </a>
+        <a href="#">
+          <TiSocialFacebookCircular className="text-gray-600 h-10 w-10 bg-white rounded-lg p-2 hover:scale-110 transition" />
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
         </div>
       </section>
+
     </>
   );
 }
