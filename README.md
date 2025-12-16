@@ -14,9 +14,9 @@
 
 **Checklist:**
 
-- [ ] Init project: `npx create-next-app@latest --ts`
-- [ ] Install TailwindCSS
-- [ ] Create basic layout and reuse it across pages
+- [X] Init project: `npx create-next-app@latest --ts`
+- [X] Install TailwindCSS
+- [X] Create basic layout and reuse it across pages
 
 ---
 
